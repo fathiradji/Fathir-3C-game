@@ -75,6 +75,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private PlayerAudioManager _playerAudioManager;
 
+    [SerializeField]
+    private Transform _resetCheckpointPosition;
+
     private PlayerStance _playerStance;
     private bool _isGrounded;
     private float _speed;
@@ -412,5 +415,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void ResetPositionToCheckpoint()
+    {
+        if (_resetCheckpointPosition != null)
+        {
+            transform.position = _resetCheckpointPosition.position;
+            transform.rotation = _resetCheckpointPosition.rotation;
+        }
     }
 }
